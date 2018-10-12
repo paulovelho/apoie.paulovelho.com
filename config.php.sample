@@ -1,0 +1,8 @@
+<?php
+
+	$api = "add email api url";
+	$secret = "password";
+	$source = "source id";
+	$email_to = "email_to@paulovelho.com";
+
+?>

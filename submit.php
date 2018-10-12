@@ -1,8 +1,4 @@
 <?php
-	$api = "http://contato.paulovelho.com.br/server.php?addMail";
-	$secret = ",wall-e";
-	$source = 5;
-	$email_to = "apoie@paulovelho.com";
 
 	$data = @$_POST;
 	if(!empty($data)){
