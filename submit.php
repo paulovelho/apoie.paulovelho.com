@@ -1,36 +1,37 @@
 <?php
 
-	$data = @$_POST;
-	if(!empty($data)){
-		$name = $data["name"];
-		$email = $data["email"];
-		$message = $data["message"];
-		$secret = MagratheaConfig::Instance()->GetFromDefault("secret_key");
+  include ("config.php");
 
-		$email_message = "FROM: [".$name." <".$email.">] :  \n\n".$message;
-		$postData = array(
-			'source' => $source,
-			'to' => $email_to,
-			'replyto' => "'".$name."' <".$email.">",
-			'subject' => $subject,
-			'message' => $email_message,
-			'priority' => 70,
-			'auth' => $secret 
-		);
-		$options = array(
-			'http' => array(
-			'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-			'method'  => 'POST',
-			'content' => http_build_query($postData),
-			),
-		);
-		$context  = stream_context_create($options);
-		$wsContato = $wsContato."";
-		$result = file_get_contents($wsContato, false, $context);
-		// p_r($result);
-	} else {
-		die;
-	}
+  $data = @$_POST;
+  if(!empty($data)){
+    $name = $data["name"];
+    $email = $data["email"];
+    $message = $data["message"];
+
+    $email_message = "FROM: [".$name." <".$email.">] :  \n\n".$message;
+    $postData = array(
+      'source' => $source,
+      'to' => $email_to,
+      'replyto' => "'".$name."' <".$email.">",
+      'subject' => $subject,
+      'message' => $email_message,
+      'priority' => 70,
+      'auth' => $secret 
+    );
+    $options = array(
+      'http' => array(
+      'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+      'method'  => 'POST',
+      'content' => http_build_query($postData),
+      ),
+    );
+    $context  = stream_context_create($options);
+    $wsContato = $wsContato."";
+    $result = file_get_contents($wsContato, false, $context);
+    // p_r($result);
+  } else {
+    die;
+  }
 
 ?>
 
@@ -83,4 +84,3 @@
 
   </body>
 </html>
-
