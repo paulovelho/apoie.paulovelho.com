@@ -7,6 +7,7 @@
     $name = $data["name"];
     $email = $data["email"];
     $message = $data["message"];
+    $subject = "Mensagem de apoio";
 
     $email_message = "FROM: [".$name." <".$email.">] :  \n\n".$message;
     $postData = array(
@@ -20,10 +21,10 @@
     );
     $options = array(
       'http' => array(
-      'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-      'method'  => 'POST',
-      'content' => http_build_query($postData),
-      ),
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($postData)
+      )
     );
     $context  = stream_context_create($options);
     $wsContato = $wsContato."";
