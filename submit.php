@@ -27,8 +27,7 @@
       )
     );
     $context  = stream_context_create($options);
-    $wsContato = $wsContato."";
-    $result = file_get_contents($wsContato, false, $context);
+    $result = file_get_contents($api, false, $context);
     // p_r($result);
   } else {
     die;
